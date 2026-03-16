@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+	--font-jetbrains: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	--font-geist: "Geist", ui-sans-serif, system-ui, sans-serif;
+
+	--color-accent-green: #10B981;
+	--color-bg-page: #0A0A0A;
+	--color-bg-surface: #0F0F0F;
+	--color-border-primary: #2A2A2A;
+}
+
+:root {
+	--background: #0A0A0A;
+	--foreground: #FAFAFA;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background: #000000;
+		--foreground: #f9fafb;
+	}
+}
+
+body {
+	background-color: var(--background);
+	color: var(--foreground);
+}
