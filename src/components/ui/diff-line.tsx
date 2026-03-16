@@ -5,9 +5,9 @@ const diffLineVariants = tv({
 	base: "flex items-start gap-4 px-4 py-2 font-mono text-sm border-l-2",
 	variants: {
 		type: {
-			added: "bg-[#0A1A0F] border-[#10B981] text-foreground",
-			removed: "bg-[#1A0A0A] border-[#EF4444] text-foreground/60",
-			context: "bg-transparent border-transparent text-foreground/60",
+			added: "bg-accent-green/10 border-accent-green text-text-primary",
+			removed: "bg-accent-red/10 border-accent-red text-text-secondary",
+			context: "bg-transparent border-transparent text-text-secondary",
 		},
 	},
 	defaultVariants: {
@@ -28,7 +28,7 @@ export const DiffLine = ({ type, code, className, ...props }: DiffLineProps) => 
 			? "text-accent-green"
 			: type === "removed"
 				? "text-accent-red"
-				: "text-foreground/20";
+				: "text-text-tertiary";
 
 	return (
 		<div className={diffLineVariants({ type, className })} {...props}>

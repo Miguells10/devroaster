@@ -5,10 +5,10 @@ const badgeVariants = tv({
 	base: "inline-flex items-center px-2 py-0.5 text-[10px] font-bold font-mono tracking-tight uppercase",
 	variants: {
 		variant: {
-			critical: "text-[#EF4444]",
-			warning: "text-[#F59E0B]",
-			good: "text-[#10B981]",
-			verdict: "text-foreground bg-bg-surface border border-border-primary",
+			critical: "text-accent-red",
+			warning: "text-accent-amber",
+			good: "text-accent-green",
+			verdict: "text-text-primary bg-bg-surface border border-border-primary",
 		},
 	},
 	defaultVariants: {

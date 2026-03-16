@@ -1,6 +1,5 @@
 "use client";
 
-import type * as React from "react";
 import { Switch as BaseSwitch } from "@base-ui/react/switch";
 import { tv, type VariantProps } from "tailwind-variants";
 
@@ -15,7 +14,7 @@ export interface SwitchProps
 	extends React.ComponentPropsWithoutRef<typeof BaseSwitch.Root>,
 		VariantProps<typeof switchVariants> {}
 
-const Switch = ({ className, ...props }: SwitchProps) => {
+export const Switch = ({ className, ...props }: SwitchProps) => {
 	const { root, thumb } = switchVariants();
 	return (
 		<BaseSwitch.Root className={root({ className }) as string} {...props}>
@@ -25,5 +24,3 @@ const Switch = ({ className, ...props }: SwitchProps) => {
 };
 
 Switch.displayName = "Switch";
-
-export { Switch };

@@ -1,9 +1,14 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import {
+	Card,
+	CardHeader,
+	CardTitle,
+	CardDescription,
+	CardContent,
+} from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 import { DiffLine } from "@/components/ui/diff-line";
-import { Navbar } from "@/components/ui/navbar";
 import { ScoreRing } from "@/components/ui/score-ring";
 import { Switch } from "@/components/ui/switch";
 import { TableCell, TableRow } from "@/components/ui/table-row";
@@ -19,9 +24,7 @@ export default function DemoPage() {
 }`;
 
 	return (
-		<div className="min-h-screen bg-bg-page">
-			<Navbar />
-
+		<div className="min-h-screen bg-bg-page pb-20">
 			<main className="p-12 space-y-16 max-w-6xl mx-auto">
 				<section className="space-y-6 text-center py-12 border-b border-border-primary">
 					<Typography variant="h1">paste your code. get roasted.</Typography>
@@ -60,11 +63,11 @@ export default function DemoPage() {
 				<section className="space-y-8">
 					<Typography variant="h2">toggle (base-ui)</Typography>
 					<div className="flex items-center gap-8">
-						<div className="flex items-center gap-2 text-sm font-mono text-foreground/60">
+						<div className="flex items-center gap-2 text-sm font-mono text-text-secondary">
 							<Switch defaultChecked />
 							<span>On</span>
 						</div>
-						<div className="flex items-center gap-2 text-sm font-mono text-foreground/60">
+						<div className="flex items-center gap-2 text-sm font-mono text-text-secondary">
 							<Switch />
 							<span>Off</span>
 						</div>
@@ -85,7 +88,6 @@ export default function DemoPage() {
 					<Typography variant="h2">score_ring</Typography>
 					<div className="flex items-center gap-12">
 						<ScoreRing score={3.5} maxScore={10} />
-						<ScoreRing score={8.2} maxScore={10} size="sm" />
 					</div>
 				</section>
 
@@ -109,54 +111,39 @@ export default function DemoPage() {
 							<TableCell width="60px" className="text-accent-red font-bold">
 								2.1
 							</TableCell>
-							<TableCell className="flex-1 text-foreground/60 truncate">
-								function calculateTotal(items) {"{ var total = 0; ... }"}
+							<TableCell className="flex-1 text-text-secondary truncate pr-4">
+								{"function calculateTotal(items) { var total = 0; ... }"}
 							</TableCell>
 							<TableCell
 								width="100px"
-								className="text-right text-foreground/40"
+								className="text-right text-text-tertiary"
 							>
 								javascript
-							</TableCell>
-						</TableRow>
-						<TableRow>
-							<TableCell width="40px">#2</TableCell>
-							<TableCell width="60px" className="text-accent-amber font-bold">
-								5.5
-							</TableCell>
-							<TableCell className="flex-1 text-foreground/60 truncate">
-								{"const hello = () => console.log(\"world\");"}
-							</TableCell>
-							<TableCell
-								width="100px"
-								className="text-right text-foreground/40"
-							>
-								typescript
 							</TableCell>
 						</TableRow>
 					</div>
 				</section>
 
 				<section className="space-y-8">
-					<Typography variant="h2">cards</Typography>
+					<Typography variant="h2">cards (composed)</Typography>
 					<Card>
-						<div className="space-y-2">
-							<Badge variant="critical">Critical</Badge>
-							<Typography variant="h3">
-								using var instead of const/let
-							</Typography>
+						<CardHeader>
+							<Badge variant="critical" className="w-fit">Critical</Badge>
+							<CardTitle>using var instead of const/let</CardTitle>
+							<CardDescription>
+								the var keyword is function-scoped rather than block-scoped.
+							</CardDescription>
+						</CardHeader>
+						<CardContent>
 							<Typography variant="subtitle">
-								the var keyword is function-scoped rather than block-scoped,
-								which can lead to unexpected behavior and bugs.
+								This can lead to unexpected behavior and bugs in your code.
 							</Typography>
-						</div>
+						</CardContent>
 					</Card>
 				</section>
 
 				<section className="space-y-8">
-					<Typography variant="h2">
-						code_block (shiki server component)
-					</Typography>
+					<Typography variant="h2">code_block (shiki server component)</Typography>
 					<div className="max-w-2xl">
 						<CodeBlock code={sampleCode} lang="javascript" />
 					</div>

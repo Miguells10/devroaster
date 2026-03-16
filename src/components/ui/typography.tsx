@@ -5,12 +5,12 @@ const typographyVariants = tv({
 	base: "font-mono",
 	variants: {
 		variant: {
-			h1: "text-4xl font-bold tracking-tight text-foreground",
+			h1: "text-4xl font-bold tracking-tight text-text-primary",
 			h2: "text-xl font-bold text-accent-green",
-			h3: "text-lg font-bold text-foreground",
-			body: "text-sm text-foreground/80 leading-relaxed",
-			subtitle: "text-sm text-foreground/40",
-			code: "text-xs text-foreground/60",
+			h3: "text-lg font-bold text-text-primary",
+			body: "text-sm text-text-secondary leading-relaxed",
+			subtitle: "text-sm text-text-tertiary",
+			code: "text-xs text-text-tertiary",
 		},
 	},
 	defaultVariants: {
@@ -33,8 +33,15 @@ export const Typography = ({
 }: TypographyProps) => {
 	const isH2 = variant === "h2";
 	return (
-		<Component className={typographyVariants({ variant, className })} {...props}>
-			{isH2 && <span className="mr-2 text-accent-green">{"//"}</span>}
+		<Component
+			className={typographyVariants({ variant, className })}
+			{...props}
+		>
+			{isH2 && (
+				<span className="mr-2 text-accent-green" aria-hidden="true">
+					{"//"}
+				</span>
+			)}
 			{children}
 		</Component>
 	);

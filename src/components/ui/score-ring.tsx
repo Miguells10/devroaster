@@ -2,16 +2,7 @@ import type * as React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 
 const scoreRingVariants = tv({
-	base: "relative flex items-center justify-center",
-	variants: {
-		size: {
-			default: "h-[180px] w-[180px]",
-			sm: "h-[120px] w-[120px]",
-		},
-	},
-	defaultVariants: {
-		size: "default",
-	},
+	base: "relative flex items-center justify-center h-[180px] w-[180px]",
 });
 
 export interface ScoreRingProps
@@ -24,19 +15,18 @@ export interface ScoreRingProps
 export const ScoreRing = ({
 	score,
 	maxScore = 10,
-	size,
 	className,
 	...props
 }: ScoreRingProps) => {
 	const percentage = (score / maxScore) * 100;
-	const radius = size === "sm" ? 50 : 80;
+	const radius = 80;
 	const stroke = 4;
 	const normalizedRadius = radius - stroke * 2;
 	const circumference = normalizedRadius * 2 * Math.PI;
 	const strokeDashoffset = circumference - (percentage / 100) * circumference;
 
 	return (
-		<div className={scoreRingVariants({ size, className })} {...props}>
+		<div className={scoreRingVariants({ className })} {...props}>
 			<svg
 				height={radius * 2}
 				width={radius * 2}
@@ -46,7 +36,7 @@ export const ScoreRing = ({
 			>
 				<title>{`Score: ${score.toFixed(1)}`}</title>
 				<circle
-					stroke="var(--border-primary)"
+					stroke="var(--color-border-primary)"
 					fill="transparent"
 					strokeWidth={stroke}
 					r={normalizedRadius}
@@ -67,30 +57,16 @@ export const ScoreRing = ({
 				/>
 				<defs>
 					<linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-						<stop offset="0%" stopColor="var(--accent-green)" />
-						<stop offset="100%" stopColor="var(--accent-amber)" />
+						<stop offset="0%" stopColor="var(--color-accent-green)" />
+						<stop offset="100%" stopColor="var(--color-accent-amber)" />
 					</linearGradient>
 				</defs>
 			</svg>
-			<div className="absolute flex flex-col items-center justify-center font-mono">
-				<span
-					className={
-						size === "sm"
-							? "text-3xl font-bold"
-							: "text-5xl font-bold text-foreground"
-					}
-				>
+			<div className="absolute flex flex-col items-center justify-center font-mono text-center">
+				<span className="text-5xl font-bold text-text-primary">
 					{score.toFixed(1)}
 				</span>
-				<span
-					className={
-						size === "sm"
-							? "text-xs text-foreground/40"
-							: "text-base text-foreground/40"
-					}
-				>
-					/{maxScore}
-				</span>
+				<span className="text-base text-text-tertiary">/{maxScore}</span>
 			</div>
 		</div>
 	);

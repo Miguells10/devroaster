@@ -7,8 +7,8 @@ const buttonVariants = tv({
 		variant: {
 			primary: "bg-accent-green text-bg-page hover:bg-accent-green/90 font-bold",
 			secondary:
-				"bg-transparent text-foreground border border-border-primary hover:bg-bg-surface",
-			link: "text-foreground underline-offset-4 hover:underline border border-border-primary",
+				"bg-transparent text-text-primary border border-border-primary hover:bg-bg-surface",
+			link: "text-text-primary underline-offset-4 hover:underline border border-border-primary",
 		},
 		size: {
 			default: "h-10 px-6 py-2.5",
@@ -26,7 +26,7 @@ export interface ButtonProps
 	extends React.ButtonHTMLAttributes<HTMLButtonElement>,
 		VariantProps<typeof buttonVariants> {}
 
-const Button = ({ className, variant, size, ...props }: ButtonProps) => {
+export const Button = ({ className, variant, size, ...props }: ButtonProps) => {
 	return (
 		<button
 			className={buttonVariants({ variant, size, className })}
@@ -35,5 +35,3 @@ const Button = ({ className, variant, size, ...props }: ButtonProps) => {
 	);
 };
 Button.displayName = "Button";
-
-export { Button, buttonVariants };
