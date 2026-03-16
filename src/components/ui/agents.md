@@ -42,4 +42,5 @@ export const MyComponent = ...
 
 ## 3. Integração com o Design (Pencil)
 - Mapeie rigorosamente as cores e paddings definidos no design system (Pencil).
-- Use as variáveis definidas em `globals.css` (ex: `bg-accent-green`, `font-jetbrains`).
+- Use as variáveis definidas em `globals.css` (ex: `bg-accent-green`).
+- Utilize as classes de fonte padrão do Tailwind: `font-sans` para texto tradicional e `font-mono` para texto monospaced (JetBrains Mono).
