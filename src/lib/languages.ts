@@ -1,0 +1,28 @@
+export const SUPPORTED_LANGUAGES = [
+	"javascript",
+	"typescript",
+	"jsx",
+	"tsx",
+	"python",
+	"rust",
+	"go",
+	"java",
+	"kotlin",
+	"swift",
+	"css",
+	"html",
+	"json",
+	"sql",
+	"bash",
+	"php",
+	"ruby",
+	"csharp",
+	"cpp",
+	"markdown",
+	"dockerfile",
+	"yaml",
+	"toml",
+	"plaintext",
+] as const;
+
+export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];

@@ -21,7 +21,11 @@ export const TableCell = ({
 	className,
 	width,
 	children,
-}: { className?: string; width?: string; children: React.ReactNode }) => {
+}: {
+	className?: string;
+	width?: string;
+	children: React.ReactNode;
+}) => {
 	return (
 		<div className={className} style={{ width }}>
 			{children}

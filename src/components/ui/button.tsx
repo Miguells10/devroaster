@@ -5,7 +5,8 @@ const buttonVariants = tv({
 	base: "inline-flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-green disabled:pointer-events-none disabled:opacity-50 font-mono",
 	variants: {
 		variant: {
-			primary: "bg-accent-green text-bg-page hover:bg-accent-green/90 font-bold",
+			primary:
+				"bg-accent-green text-bg-page hover:bg-accent-green/90 font-bold",
 			secondary:
 				"bg-transparent text-text-primary border border-border-primary hover:bg-bg-surface",
 			link: "text-text-primary underline-offset-4 hover:underline border border-border-primary",

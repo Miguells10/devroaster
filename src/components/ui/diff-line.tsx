@@ -21,7 +21,12 @@ export interface DiffLineProps
 	code: string;
 }
 
-export const DiffLine = ({ type, code, className, ...props }: DiffLineProps) => {
+export const DiffLine = ({
+	type,
+	code,
+	className,
+	...props
+}: DiffLineProps) => {
 	const prefix = type === "added" ? "+" : type === "removed" ? "-" : " ";
 	const prefixColor =
 		type === "added"

@@ -2,10 +2,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
 	Card,
+	CardContent,
+	CardDescription,
 	CardHeader,
 	CardTitle,
-	CardDescription,
-	CardContent,
 } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 import { DiffLine } from "@/components/ui/diff-line";
@@ -128,7 +128,9 @@ export default function DemoPage() {
 					<Typography variant="h2">cards (composed)</Typography>
 					<Card>
 						<CardHeader>
-							<Badge variant="critical" className="w-fit">Critical</Badge>
+							<Badge variant="critical" className="w-fit">
+								Critical
+							</Badge>
 							<CardTitle>using var instead of const/let</CardTitle>
 							<CardDescription>
 								the var keyword is function-scoped rather than block-scoped.
@@ -143,7 +145,9 @@ export default function DemoPage() {
 				</section>
 
 				<section className="space-y-8">
-					<Typography variant="h2">code_block (shiki server component)</Typography>
+					<Typography variant="h2">
+						code_block (shiki server component)
+					</Typography>
 					<div className="max-w-2xl">
 						<CodeBlock code={sampleCode} lang="javascript" />
 					</div>

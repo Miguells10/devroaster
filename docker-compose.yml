@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: devroaster_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: devroaster
+      POSTGRES_USER: devroaster
+      POSTGRES_PASSWORD: devroaster_secret
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U devroaster -d devroaster"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:

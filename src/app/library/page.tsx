@@ -17,7 +17,9 @@ export default function LibraryPage() {
 				<section className="space-y-6">
 					<div className="flex items-center gap-2 text-accent-green font-jetbrains text-sm font-bold">
 						<span>{"//"}</span>
-						<h2 className="text-foreground uppercase tracking-wider">buttons</h2>
+						<h2 className="text-foreground uppercase tracking-wider">
+							buttons
+						</h2>
 					</div>
 
 					<div className="grid gap-8">

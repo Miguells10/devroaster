@@ -2,8 +2,9 @@
 
 @theme {
 	--font-mono: var(--font-jetbrains);
-	--font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--font-sans:
+		ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+		"Segoe UI Symbol", "Noto Color Emoji";
 
 	--color-accent-green: #10b981;
 	--color-accent-red: #ef4444;

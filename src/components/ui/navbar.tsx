@@ -12,7 +12,11 @@ export const Navbar = ({
 	...props
 }: React.HTMLAttributes<HTMLElement>) => {
 	return (
-		<nav className={navbarVariants({ className })} aria-label="Main Navigation" {...props}>
+		<nav
+			className={navbarVariants({ className })}
+			aria-label="Main Navigation"
+			{...props}
+		>
 			{children}
 		</nav>
 	);
@@ -22,9 +26,16 @@ export const NavbarBrand = ({
 	href = "/",
 	children,
 	className,
-}: { href?: string; children: React.ReactNode; className?: string }) => {
+}: {
+	href?: string;
+	children: React.ReactNode;
+	className?: string;
+}) => {
 	return (
-		<Link href={href} className={cn("flex items-center gap-2 font-mono group", className)}>
+		<Link
+			href={href}
+			className={cn("flex items-center gap-2 font-mono group", className)}
+		>
 			<span
 				className="text-xl font-bold text-accent-green group-hover:translate-x-0.5 transition-transform"
 				aria-hidden="true"
@@ -41,9 +52,17 @@ export const NavbarBrand = ({
 export const NavbarContent = ({
 	className,
 	children,
-}: { className?: string; children: React.ReactNode }) => {
+}: {
+	className?: string;
+	children: React.ReactNode;
+}) => {
 	return (
-		<div className={cn("flex items-center gap-6 text-sm font-mono ml-auto", className)}>
+		<div
+			className={cn(
+				"flex items-center gap-6 text-sm font-mono ml-auto",
+				className,
+			)}
+		>
 			{children}
 		</div>
 	);
@@ -53,11 +72,18 @@ export const NavbarLink = ({
 	href,
 	children,
 	className,
-}: { href: string; children: React.ReactNode; className?: string }) => {
+}: {
+	href: string;
+	children: React.ReactNode;
+	className?: string;
+}) => {
 	return (
 		<Link
 			href={href}
-			className={cn("text-foreground/60 hover:text-foreground transition-colors", className)}
+			className={cn(
+				"text-foreground/60 hover:text-foreground transition-colors",
+				className,
+			)}
 		>
 			{children}
 		</Link>

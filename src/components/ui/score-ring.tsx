@@ -56,7 +56,13 @@ export const ScoreRing = ({
 					className="transition-all duration-1000 ease-out"
 				/>
 				<defs>
-					<linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+					<linearGradient
+						id="scoreGradient"
+						x1="0%"
+						y1="0%"
+						x2="100%"
+						y2="100%"
+					>
 						<stop offset="0%" stopColor="var(--color-accent-green)" />
 						<stop offset="100%" stopColor="var(--color-accent-amber)" />
 					</linearGradient>

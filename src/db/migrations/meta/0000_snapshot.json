@@ -1,0 +1,276 @@
+{
+	"id": "a907325e-c45e-4aa7-b9cb-0820e868d617",
+	"prevId": "00000000-0000-0000-0000-000000000000",
+	"version": "7",
+	"dialect": "postgresql",
+	"tables": {
+		"public.roast_issues": {
+			"name": "roast_issues",
+			"schema": "",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "uuid",
+					"primaryKey": true,
+					"notNull": true,
+					"default": "gen_random_uuid()"
+				},
+				"roast_id": {
+					"name": "roast_id",
+					"type": "uuid",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"severity": {
+					"name": "severity",
+					"type": "issue_severity",
+					"typeSchema": "public",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"type": {
+					"name": "type",
+					"type": "issue_type",
+					"typeSchema": "public",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"title": {
+					"name": "title",
+					"type": "varchar(200)",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"description": {
+					"name": "description",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"code_before": {
+					"name": "code_before",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"code_after": {
+					"name": "code_after",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"line_start": {
+					"name": "line_start",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"line_end": {
+					"name": "line_end",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"sort_order": {
+					"name": "sort_order",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true,
+					"default": 0
+				},
+				"created_at": {
+					"name": "created_at",
+					"type": "timestamp",
+					"primaryKey": false,
+					"notNull": true,
+					"default": "now()"
+				}
+			},
+			"indexes": {},
+			"foreignKeys": {
+				"roast_issues_roast_id_roasts_id_fk": {
+					"name": "roast_issues_roast_id_roasts_id_fk",
+					"tableFrom": "roast_issues",
+					"tableTo": "roasts",
+					"columnsFrom": ["roast_id"],
+					"columnsTo": ["id"],
+					"onDelete": "cascade",
+					"onUpdate": "no action"
+				}
+			},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {},
+			"policies": {},
+			"checkConstraints": {},
+			"isRLSEnabled": false
+		},
+		"public.roasts": {
+			"name": "roasts",
+			"schema": "",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "uuid",
+					"primaryKey": true,
+					"notNull": true,
+					"default": "gen_random_uuid()"
+				},
+				"code": {
+					"name": "code",
+					"type": "varchar(10000)",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"language": {
+					"name": "language",
+					"type": "language",
+					"typeSchema": "public",
+					"primaryKey": false,
+					"notNull": true,
+					"default": "'plaintext'"
+				},
+				"roast_mode": {
+					"name": "roast_mode",
+					"type": "roast_mode",
+					"typeSchema": "public",
+					"primaryKey": false,
+					"notNull": true,
+					"default": "'honest'"
+				},
+				"score": {
+					"name": "score",
+					"type": "numeric(4, 2)",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"summary": {
+					"name": "summary",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"code_preview": {
+					"name": "code_preview",
+					"type": "varchar(120)",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"char_count": {
+					"name": "char_count",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"line_count": {
+					"name": "line_count",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"session_id": {
+					"name": "session_id",
+					"type": "varchar(64)",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"created_at": {
+					"name": "created_at",
+					"type": "timestamp",
+					"primaryKey": false,
+					"notNull": true,
+					"default": "now()"
+				}
+			},
+			"indexes": {
+				"roasts_score_idx": {
+					"name": "roasts_score_idx",
+					"columns": [
+						{
+							"expression": "score",
+							"isExpression": false,
+							"asc": true,
+							"nulls": "last"
+						}
+					],
+					"isUnique": false,
+					"concurrently": false,
+					"method": "btree",
+					"with": {}
+				}
+			},
+			"foreignKeys": {},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {},
+			"policies": {},
+			"checkConstraints": {},
+			"isRLSEnabled": false
+		}
+	},
+	"enums": {
+		"public.issue_severity": {
+			"name": "issue_severity",
+			"schema": "public",
+			"values": ["critical", "warning", "good"]
+		},
+		"public.issue_type": {
+			"name": "issue_type",
+			"schema": "public",
+			"values": [
+				"naming",
+				"logic",
+				"security",
+				"performance",
+				"style",
+				"architecture",
+				"tech_debt",
+				"best_practice",
+				"other"
+			]
+		},
+		"public.language": {
+			"name": "language",
+			"schema": "public",
+			"values": [
+				"javascript",
+				"typescript",
+				"jsx",
+				"tsx",
+				"python",
+				"rust",
+				"go",
+				"java",
+				"kotlin",
+				"swift",
+				"css",
+				"html",
+				"json",
+				"sql",
+				"bash",
+				"php",
+				"ruby",
+				"csharp",
+				"cpp",
+				"markdown",
+				"dockerfile",
+				"yaml",
+				"toml",
+				"plaintext"
+			]
+		},
+		"public.roast_mode": {
+			"name": "roast_mode",
+			"schema": "public",
+			"values": ["honest", "sarcastic"]
+		}
+	},
+	"schemas": {},
+	"sequences": {},
+	"roles": {},
+	"policies": {},
+	"views": {},
+	"_meta": {
+		"columns": {},
+		"schemas": {},
+		"tables": {}
+	}
+}

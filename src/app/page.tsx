@@ -1,19 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import { Typography } from "@/components/ui/typography";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Switch } from "@/components/ui/switch";
 import {
 	CodeEditor,
-	CodeEditorHeader,
 	CodeEditorBody,
+	CodeEditorHeader,
 } from "@/components/ui/code-editor";
-import { TableRow, TableCell } from "@/components/ui/table-row";
-import { Badge } from "@/components/ui/badge";
+import { Switch } from "@/components/ui/switch";
+import { TableCell, TableRow } from "@/components/ui/table-row";
+import { Typography } from "@/components/ui/typography";
+import { useHighlightedCode } from "@/hooks/use-highlighted-code";
 
 export default function HomePage() {
 	const [code, setCode] = useState("");
+	const highlighted = useHighlightedCode({ code });
 
 	return (
 		<main className="py-20 flex flex-col items-center space-y-16">
@@ -28,15 +30,27 @@ export default function HomePage() {
 					</Typography>
 				</div>
 				<Typography variant="body" className="text-base text-text-secondary">
-					{"// drop your code below and we'll rate it — brutally honest or full roast mode"}
+					{
+						"// drop your code below and we'll rate it — brutally honest or full roast mode"
+					}
 				</Typography>
 			</section>
 
 			{/* Editor Section */}
 			<section className="w-full flex flex-col items-center gap-6">
 				<CodeEditor>
-					<CodeEditorHeader filename="new_roast.js" />
-					<CodeEditorBody value={code} onChange={setCode} />
+					<CodeEditorHeader
+						filename="new_roast.js"
+						activeLanguage={highlighted.activeLanguage}
+						isAutoDetecting={highlighted.isAutoDetecting}
+						manualLanguage={highlighted.manualLanguage}
+						onLanguageChange={highlighted.setManualLanguage}
+					/>
+					<CodeEditorBody
+						value={code}
+						onChange={setCode}
+						html={highlighted.html}
+					/>
 				</CodeEditor>
 
 				{/* Actions Bar */}
@@ -134,7 +148,10 @@ export default function HomePage() {
 				</div>
 
 				<div className="text-center py-4">
-					<Typography variant="subtitle" className="hover:text-text-secondary cursor-pointer transition-colors">
+					<Typography
+						variant="subtitle"
+						className="hover:text-text-secondary cursor-pointer transition-colors"
+					>
 						{"showing top 3 of 2,847 · view full leaderboard >>"}
 					</Typography>
 				</div>
