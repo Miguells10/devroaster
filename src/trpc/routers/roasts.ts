@@ -1,13 +1,16 @@
+import { generateObject } from "ai";
 import { asc, eq } from "drizzle-orm";
-import { db } from "@/db";
-import { roasts, roastIssues, languageEnum, roastModeEnum } from "@/db/schema";
-import { baseProcedure, createTRPCRouter } from "../init";
 import { cacheLife } from "next/cache";
 import { z } from "zod";
-import { generateObject } from "ai";
+import { db } from "@/db";
+import { languageEnum, roastIssues, roastModeEnum, roasts } from "@/db/schema";
 import { model } from "@/lib/ai/google";
-import { HONEST_SYSTEM_PROMPT, SARCASTIC_SYSTEM_PROMPT } from "@/lib/ai/prompts";
+import {
+	HONEST_SYSTEM_PROMPT,
+	SARCASTIC_SYSTEM_PROMPT,
+} from "@/lib/ai/prompts";
 import { roastAnalysisSchema } from "@/lib/ai/schema";
+import { baseProcedure, createTRPCRouter } from "../init";
 
 export const roastsRouter = createTRPCRouter({
 	create: baseProcedure
@@ -75,7 +78,9 @@ export const roastsRouter = createTRPCRouter({
 				return { id: result.id };
 			} catch (error) {
 				console.error("Failed to create roast:", error);
-				throw new Error("Failed to analyze code. The AI might be tired of your bugs.");
+				throw new Error(
+					"Failed to analyze code. The AI might be tired of your bugs.",
+				);
 			}
 		}),
 	getById: baseProcedure

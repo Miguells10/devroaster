@@ -1,8 +1,8 @@
 import { sql } from "drizzle-orm";
+import { cacheLife } from "next/cache";
 import { db } from "@/db";
 import { roasts } from "@/db/schema";
 import { baseProcedure, createTRPCRouter } from "../init";
-import { cacheLife } from "next/cache";
 
 export const metricsRouter = createTRPCRouter({
 	getOverview: baseProcedure.query(async () => {

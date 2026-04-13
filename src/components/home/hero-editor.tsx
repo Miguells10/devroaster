@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
 	CodeEditor,
@@ -10,17 +11,19 @@ import {
 } from "@/components/ui/code-editor";
 import { Switch } from "@/components/ui/switch";
 import { useHighlightedCode } from "@/hooks/use-highlighted-code";
-import { trpc } from "@/trpc/client";
+import { useMutation } from "@tanstack/react-query";
+import { useTRPC } from "@/trpc/client";
 import { getSessionId } from "@/lib/session";
-import { Loader2 } from "lucide-react";
 
 export function HeroEditor() {
 	const router = useRouter();
 	const [code, setCode] = useState("");
 	const [isSarcastic, setIsSarcastic] = useState(false);
 	const highlighted = useHighlightedCode({ code });
+	const t = useTRPC();
 
-	const createRoast = trpc.roasts.create.useMutation({
+	const createRoast = useMutation({
+		...t.roasts.create.mutationOptions(),
 		onSuccess: (data) => {
 			router.push(`/roast/${data.id}`);
 		},
@@ -101,4 +104,3 @@ export function HeroEditor() {
 		</section>
 	);
 }
-

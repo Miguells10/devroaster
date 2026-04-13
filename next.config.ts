@@ -1,9 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-	experimental: {
-		dynamicIO: true,
-	},
+	cacheComponents: true,
+	experimental: {},
 };
 
 export default nextConfig;

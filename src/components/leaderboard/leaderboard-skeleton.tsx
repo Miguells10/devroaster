@@ -1,4 +1,3 @@
-
 export function LeaderboardSkeleton() {
 	return (
 		<section className="flex flex-col gap-8 w-full animate-pulse">

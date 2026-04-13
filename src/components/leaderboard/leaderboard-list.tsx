@@ -1,7 +1,7 @@
-import { CodeBlock } from "@/components/ui/code-block";
-import { api } from "@/trpc/server";
-import { Typography } from "@/components/ui/typography";
 import Link from "next/link";
+import { CodeBlock } from "@/components/ui/code-block";
+import { Typography } from "@/components/ui/typography";
+import { api } from "@/trpc/server";
 
 export async function LeaderboardList() {
 	const leaderboard = await api.roasts.getLeaderboard();
@@ -18,7 +18,9 @@ export async function LeaderboardList() {
 						<div className="flex items-center gap-4">
 							<div className="flex items-center gap-1.5 font-mono text-[11px]">
 								<span className="text-text-tertiary">rank</span>
-								<span className="text-accent-amber font-bold">#{index + 1}</span>
+								<span className="text-accent-amber font-bold">
+									#{index + 1}
+								</span>
 							</div>
 							<div className="flex items-center gap-1.5 font-mono text-[11px]">
 								<span className="text-text-tertiary">score</span>
@@ -37,7 +39,9 @@ export async function LeaderboardList() {
 						</div>
 						<div className="flex items-center gap-3 font-mono text-[11px]">
 							<span className="text-text-secondary">{entry.language}</span>
-							<span className="text-text-tertiary">{entry.lineCount} lines</span>
+							<span className="text-text-tertiary">
+								{entry.lineCount} lines
+							</span>
 						</div>
 					</div>
 
@@ -66,7 +70,10 @@ export async function LeaderboardList() {
 						{/* Summary Box */}
 						<div className="p-4 border-l-2 border-accent-amber bg-bg-surface/30 relative z-10">
 							<p className="text-text-secondary font-mono text-xs leading-relaxed italic">
-								"{entry.summary || "no summary available. just look at the code and cry."}"
+								"
+								{entry.summary ||
+									"no summary available. just look at the code and cry."}
+								"
 							</p>
 						</div>
 

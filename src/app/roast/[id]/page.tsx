@@ -36,10 +36,16 @@ export default async function RoastResultPage({
 						<div className="flex items-center gap-2">
 							<div className="w-2.5 h-2.5 rounded-full bg-accent-red animate-pulse" />
 							<span className="text-accent-red font-mono text-sm font-bold uppercase tracking-tight">
-								verdict: {roast.roastMode === "sarcastic" ? "completely_shamed" : "inspected"}
+								verdict:{" "}
+								{roast.roastMode === "sarcastic"
+									? "completely_shamed"
+									: "inspected"}
 							</span>
 						</div>
-						<Typography variant="h2" className="text-3xl leading-snug font-bold">
+						<Typography
+							variant="h2"
+							className="text-3xl leading-snug font-bold"
+						>
 							{roast.title || "Untitled Roast"}
 						</Typography>
 						<div className="flex items-center gap-3">
@@ -90,11 +96,10 @@ export default async function RoastResultPage({
 							your_submission
 						</h3>
 					</div>
-					<CodeWindow title={`submission.${roast.language === "python" ? "py" : roast.language === "typescript" ? "ts" : "js"}`}>
-						<CodeBlock
-							code={roast.code}
-							lang={roast.language}
-						/>
+					<CodeWindow
+						title={`submission.${roast.language === "python" ? "py" : roast.language === "typescript" ? "ts" : "js"}`}
+					>
+						<CodeBlock code={roast.code} lang={roast.language} />
 					</CodeWindow>
 				</section>
 
@@ -116,7 +121,9 @@ export default async function RoastResultPage({
 							<div
 								key={issue.id}
 								className={`flex flex-col gap-4 p-6 border bg-bg-page hover:bg-bg-surface/30 transition-colors ${
-									issue.severity === "critical" ? "border-accent-red/30" : "border-border-primary"
+									issue.severity === "critical"
+										? "border-accent-red/30"
+										: "border-border-primary"
 								}`}
 							>
 								<div className="flex items-center gap-2">
@@ -125,8 +132,8 @@ export default async function RoastResultPage({
 											issue.severity === "critical"
 												? "bg-accent-red"
 												: issue.severity === "warning"
-												? "bg-accent-amber"
-												: "bg-accent-green"
+													? "bg-accent-amber"
+													: "bg-accent-green"
 										}`}
 									/>
 									<span
@@ -134,8 +141,8 @@ export default async function RoastResultPage({
 											issue.severity === "critical"
 												? "text-accent-red"
 												: issue.severity === "warning"
-												? "text-accent-amber"
-												: "text-accent-green"
+													? "text-accent-amber"
+													: "text-accent-green"
 										}`}
 									>
 										{issue.severity}
@@ -166,11 +173,11 @@ export default async function RoastResultPage({
 								</h3>
 							</div>
 
-							<CodeWindow title="improved_version.js" className="border-accent-green/30">
-								<CodeBlock
-									code={roast.improvedCode}
-									lang={roast.language}
-								/>
+							<CodeWindow
+								title="improved_version.js"
+								className="border-accent-green/30"
+							>
+								<CodeBlock code={roast.improvedCode} lang={roast.language} />
 							</CodeWindow>
 						</section>
 					</>
@@ -179,4 +186,3 @@ export default async function RoastResultPage({
 		</main>
 	);
 }
-
