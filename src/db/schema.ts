@@ -87,6 +87,8 @@ export const roasts = pgTable(
 		lineCount: integer(),
 		// Sessão anônima — gerado via crypto.randomUUID(), persistido em cookie httpOnly
 		sessionId: varchar({ length: 64 }).notNull(),
+		// Código melhorado sugerido pela IA
+		improvedCode: text(),
 		createdAt: timestamp().defaultNow().notNull(),
 	},
 	(table) => [

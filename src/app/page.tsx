@@ -1,10 +1,10 @@
 import { Suspense } from "react";
-import { Typography } from "@/components/ui/typography";
 import { HeroEditor } from "@/components/home/hero-editor";
 import { HomeMetrics } from "@/components/home/home-metrics";
 import { HomeMetricsSkeleton } from "@/components/home/home-metrics-skeleton";
 import { ShameLeaderboard } from "@/components/home/shame-leaderboard";
 import { ShameLeaderboardSkeleton } from "@/components/home/shame-leaderboard-skeleton";
+import { Typography } from "@/components/ui/typography";
 import { HydrateClient, prefetch, trpc } from "@/trpc/server";
 
 export default async function HomePage() {

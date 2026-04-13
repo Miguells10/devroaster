@@ -1,8 +1,8 @@
-import { Suspense } from "react";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { LeaderboardList } from "@/components/leaderboard/leaderboard-list";
 import { LeaderboardSkeleton } from "@/components/leaderboard/leaderboard-skeleton";
-import { HydrateClient, api, prefetch, trpc } from "@/trpc/server";
+import { api, HydrateClient, prefetch, trpc } from "@/trpc/server";
 
 export const metadata: Metadata = {
 	title: "Leaderboard - DevRoaster",
@@ -38,13 +38,17 @@ export default async function LeaderboardPage() {
 						</p>
 						<div className="flex items-center gap-4 font-mono text-[10px] text-text-tertiary uppercase tracking-widest">
 							<div className="flex items-center gap-1.5">
-								<span className="text-text-secondary">{metrics.totalRoasts}</span>
+								<span className="text-text-secondary">
+									{metrics.totalRoasts}
+								</span>
 								<span>submissions</span>
 							</div>
 							<span className="w-1 h-1 rounded-full bg-text-tertiary" />
 							<div className="flex items-center gap-1.5">
 								<span>avg score:</span>
-								<span className="text-text-secondary">{metrics.avgScore}/10</span>
+								<span className="text-text-secondary">
+									{metrics.avgScore}/10
+								</span>
 							</div>
 						</div>
 					</section>

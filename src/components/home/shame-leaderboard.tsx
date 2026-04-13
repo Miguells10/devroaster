@@ -1,9 +1,9 @@
+import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { TableCell, TableRow } from "@/components/ui/table-row";
 import { Typography } from "@/components/ui/typography";
 import { api } from "@/trpc/server";
-import Link from "next/link";
 
 export async function ShameLeaderboard() {
 	// Fetch both worst roasts and total count via server caller
