@@ -7,6 +7,7 @@ import {
 	NavbarContent,
 	NavbarLink,
 } from "@/components/ui/navbar";
+import { TRPCReactProvider } from "@/trpc/client";
 
 const jetbrains = JetBrains_Mono({
 	subsets: ["latin"],
@@ -26,13 +27,15 @@ export default function RootLayout({
 	return (
 		<html lang="en" className={jetbrains.variable}>
 			<body className="font-sans antialiased bg-bg-page text-text-primary min-h-screen">
-				<Navbar>
-					<NavbarBrand>devroast</NavbarBrand>
-					<NavbarContent>
-						<NavbarLink href="/leaderboard">leaderboard</NavbarLink>
-					</NavbarContent>
-				</Navbar>
-				<div className="max-w-6xl mx-auto px-6">{children}</div>
+				<TRPCReactProvider>
+					<Navbar>
+						<NavbarBrand>devroast</NavbarBrand>
+						<NavbarContent>
+							<NavbarLink href="/leaderboard">leaderboard</NavbarLink>
+						</NavbarContent>
+					</Navbar>
+					<div className="max-w-6xl mx-auto px-6">{children}</div>
+				</TRPCReactProvider>
 			</body>
 		</html>
 	);
