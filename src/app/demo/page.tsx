@@ -8,6 +8,7 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
+import { CodeWindow } from "@/components/ui/code-window";
 import { DiffLine } from "@/components/ui/diff-line";
 import { ScoreRing } from "@/components/ui/score-ring";
 import { Switch } from "@/components/ui/switch";
@@ -149,7 +150,9 @@ export default function DemoPage() {
 						code_block (shiki server component)
 					</Typography>
 					<div className="max-w-2xl">
-						<CodeBlock code={sampleCode} lang="javascript" />
+						<CodeWindow title="sample_code.js">
+							<CodeBlock code={sampleCode} lang="javascript" />
+						</CodeWindow>
 					</div>
 				</section>
 			</main>
